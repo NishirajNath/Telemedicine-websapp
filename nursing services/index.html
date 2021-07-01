@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="./login/form.js"></script>
+    <title>Nursing Services</title>
+  </head>
+  <body>
+    <h1>Nursing Services</h1>
+    
+    <form class="contact-form">
+      <label for="">Name</label><br />
+      <input class="name" type="text" placeholder="name" /><br />
+      <label for="">Email</label><br />
+      <input class="email" type="email" placeholder="email" /><br />
+      <label for="">Phone Number</label><br />
+      <input class="phone_num" type="text" placeholder="Phone Number" /><br />
+      <label for="">Address line 1</label><br />
+      <input class="Address1" type="text" placeholder="Address line 1" /><br />
+      <label for="">Address line 2</label><br />
+      <input class="Address2" type="text" placeholder="Address line 2" /><br />
+      <label for="">City</label><br />
+      <input class="city" type="text" placeholder="city" /><br />
+      <label for="">Pin Code</label><br />
+      <input class="pin" type="text" placeholder="pin code" /><br />
+      <label for="">Message</label><br />
+      <textarea
+        class="message"
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="message"
+      ></textarea
+      ><br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
