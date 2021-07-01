@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+        <title>clinic Reports</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+         <h1>Reports </h1>
+         <table class="table">
+             <thead>
+                 <th>S.No</th>
+                 <th>type</th>
+                 <th>Clinic Name</th>
+                 <th>Patient Name</th>
+                 <th>Date</th>
+                 <th>Report</th>
+                 <th>remarks</th>
+             </thead>
+             <tbody id="tbody1">
+
+             </tbody>
+         </table>
+        </div>
+
+         
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase.js"></script>
+        <script id = "MainScript">
+
+            //----------configuration------------------//
+            var firebaseConfig = {
+                apiKey: "AIzaSyC6N5hfDRmImigG7sK_CzAlv19Zdhtt2uU",
+                authDomain: "main-f996f.firebaseapp.com",
+                databaseURL: "https://main-f996f-default-rtdb.firebaseio.com",
+                projectId: "main-f996f",
+                storageBucket: "main-f996f.appspot.com",
+                messagingSenderId: "466209057024",
+                appId: "1:466209057024:web:bfa5fbfe6028c76ef72be5"
+                        };
+             firebase.initializeApp(firebaseConfig);
+
+             function SelectAllData(){
+                 firebase.database().ref('users').on('value',
+                 function(AllRecords){
+                     AllRecords.forEach(
+                         function(CurrentRecord){
+                             var type= CurrentRecord.val().type;
+                             var clinicname= CurrentRecord.val().clinicname;
+                             var patientname= CurrentRecord.val().patientname;
+                             var date= CurrentRecord.val().date;
+                             var report= CurrentRecord.val().report;
+                             var remarks= CurrentRecord.val().remarks;
+                             AddItemsToTable(type, clinicname, patientname, date, report, remarks);
+                         }
+                     );
+
+                 });
+             }
+
+             window.onload= SelectAllData;
+
+             //Add item to table//
+             var aptNo=0;
+             function AddItemsToTable(type, clinicname, patientname, date, report, remarks){
+                 var tbody = document.getElementById('tbody1');
+                 var trow = document.createElement('tr');
+                 var td1 = document.createElement('td');
+                 var td2 = document.createElement('td');
+                 var td3 = document.createElement('td');
+                 var td4 = document.createElement('td');
+                 var td5 = document.createElement('td');
+                 var td6 = document.createElement('td');
+                 var td7 = document.createElement('td');
+                 td1.innerHTML=++aptNo;
+                 td2.innerHTML=type;
+                 td3.innerHTML=clinicname;
+                 td4.innerHTML= patientname;
+                 td5.innerHTML=date;
+                 td6.innerHTML= report;
+                 td7.innerHTML= remarks;
+                 trow.appendChild(td1);trow.appendChild(td2);trow.appendChild(td3);trow.appendChild(td4);
+                 trow.appendChild(td5);trow.appendChild(td6);trow.appendChild(td7);
+                 tbody.appendChild(trow);
+             }
+             </script>
+            </body>
+            </html>
